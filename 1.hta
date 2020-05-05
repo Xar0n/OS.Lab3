@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Лабораторная 3. Операционные системы. Нецветаев Антон ЭВМБ-18-1</title>
+	<meta charset="utf-8">
+	<HTA:APPLICATION
+        ID="oHTA"
+        APPLICATIONNAME="ConvertApp"
+        BORDER="thin"
+        BORDERSTYLE="normal"
+        CAPTION="yes"
+        ICON=""
+        MAXIMIZEBUTTON="yes"
+        MINIMIZEBUTTON="yes"
+        SHOWINTASKBAR="no"
+        SINGLEINSTANCE="no"
+        SYSMENU="yes"
+        VERSION="1.0"
+        WINDOWSTATE="normal" />
+</head>
+<body scroll="no">
+  <pre id="oPre"></pre>
+  <textarea id="text1" cols="100" rows="15" placeholder="Введите текст который вы хотите перевести в другую кодировку" required></textarea>
+   <select id='inputCharset'>
+      <option value='windows-1251' selected="">windows-1251</option>
+      <option value='koi8-r'>koi8-r</option>
+   </select>                  
+  <textarea id="text2" cols="100" rows="15" placeholder="Переведенный текст" readonly></textarea>
+  <select id='outCharset'>
+      <option value='windows-1251'>windows-1251</option>
+      <option value='koi8-r' selected="">koi8-r</option>>
+   </select>
+  <button  id="convert" onclick="convert()">CONVERT</button>
+</body>
+<script type="text/javascript">
+    var oPre = document.getElementById('oPre');
+    sTempStr = "applicationName  = " + oHTA.applicationName + "\n" + 
+               "version          = " + oHTA.version         + "\n" + 
+               "windowState      = " + oHTA.windowState     + "\n" ;
+    oPre.innerText = sTempStr;
+    var ado = new ActiveXObject('ADODB.Stream');
+    var textarea1 = document.getElementById('text1');
+    var textarea2 = document.getElementById('text2');
+    var inputCharset = document.getElementById('inputCharset');
+    var outCharset = document.getElementById('outCharset');
+    function convert() {
+      if (textarea1.value == '') alert("Поле пусто")
+      else {
+        ado.open();
+        ado.charset = inputCharset.value
+        ado.writeText(textarea1.value);
+        ado.position = 0;
+        ado.charset = outCharset.value;
+        textarea2.value = ado.readText();
+        ado.flush();
+        ado.close;
+      }
+   }
+</script>
+</html>

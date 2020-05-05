@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab3.FormController">
+   <children>
+      <Button fx:id="convert" layoutX="266.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleConvertAction" text="CONVERT" />
+      <TextArea fx:id="text1" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="284.0" promptText="Введите текст, который вы хотите конвертировать в другую кодировку" />
+      <TextArea fx:id="text2" editable="false" layoutX="302.0" layoutY="14.0" prefHeight="305.0" prefWidth="284.0" promptText="Конвертированный текст" />
+      <ComboBox fx:id="combob1"  layoutX="63.0" layoutY="334.0" prefWidth="150.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="windows-1251" />
+                    <String fx:value="koi8" />
+                </FXCollections>
+              </items>
+              <value>
+                  <String fx:value="windows-1251" />
+              </value>
+        </ComboBox>
+        <ComboBox fx:id="combob2"  layoutX="385.0" layoutY="334.0" prefWidth="150.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="windows-1251" />
+                    <String fx:value="koi8" />
+                </FXCollections>
+              </items>
+              <value>
+                  <String fx:value="koi8" />
+              </value>
+        </ComboBox>
+   </children>
+</Pane>
